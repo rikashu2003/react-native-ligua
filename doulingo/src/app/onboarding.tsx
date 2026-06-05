@@ -1,10 +1,12 @@
-import { Link } from "expo-router";
-import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 const logo = require("../../assets/assets/images/moscot-logo.png");
 const hero = require("../../assets/assets/images/mascot-welcome.png");
 
 export default function OnboardingScreen() {
+  const router = useRouter();
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.pageContainer}>
@@ -50,11 +52,12 @@ export default function OnboardingScreen() {
 
         {/* Button */}
         <View style={{ marginTop: "auto" }}>
-          <Link href="/" asChild>
-            <View style={styles.getStartedButton}>
-              <Text style={styles.getStartedText}>Get Started →</Text>
-            </View>
-          </Link>
+          <Pressable
+            style={styles.getStartedButton}
+            onPress={() => router.push("/signup")}
+          >
+            <Text style={styles.getStartedText}>Get Started →</Text>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
