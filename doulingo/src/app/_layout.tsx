@@ -5,6 +5,8 @@ import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import { View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
+import { ClerkProvider } from "@clerk/clerk-expo";
+import Constants from "expo-constants";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -28,5 +30,15 @@ export default function RootLayout() {
     return <View style={{ flex: 1, backgroundColor: "#FFFFFF" }} />;
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  const publishableKey =
+    process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ||
+    // support reading from app config extra if set
+    (Constants.expoConfig?.extra?.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY as string) ||
+    undefined;
+
+  return (
+    <ClerkProvider publishableKey={publishableKey}>
+      <Stack screenOptions={{ headerShown: false }} />
+    </ClerkProvider>
+  );
 }

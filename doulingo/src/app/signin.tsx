@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "expo-router";
+import SocialButton from "../components/SocialButton";
 
 function VerificationModal({
   visible,
@@ -160,12 +161,8 @@ export default function SignInScreen() {
             <Text style={styles.dividerText}>or continue with</Text>
 
             <View style={styles.socialRow}>
-              <Pressable style={styles.socialButton}>
-                <Text style={styles.socialButtonText}>Continue with Google</Text>
-              </Pressable>
-              <Pressable style={styles.socialButton}>
-                <Text style={styles.socialButtonText}>Continue with Apple</Text>
-              </Pressable>
+              <SocialButton label="Continue with Google" onPress={() => {}} />
+              <SocialButton label="Continue with Apple" onPress={() => {}} />
             </View>
           </View>
         </View>
@@ -261,20 +258,6 @@ const styles = StyleSheet.create({
   },
   socialRow: {
     gap: 12,
-  },
-  socialButton: {
-    width: "100%",
-    borderRadius: 18,
-    borderWidth: 1,
-    borderColor: "#D3DBE6",
-    paddingVertical: 16,
-    alignItems: "center",
-    backgroundColor: "#FFFFFF",
-  },
-  socialButtonText: {
-    color: "#101828",
-    fontWeight: "600",
-    fontSize: 15,
   },
   bottomRow: {
     flexDirection: "row",

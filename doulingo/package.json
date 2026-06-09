@@ -3,8 +3,10 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "dependencies": {
+    "@clerk/clerk-expo": "^2.19.31",
     "@expo/ui": "~56.0.15",
     "expo": "~56.0.8",
+    "expo-auth-session": "^56.0.13",
     "expo-constants": "~56.0.16",
     "expo-device": "~56.0.4",
     "expo-font": "~56.0.5",
